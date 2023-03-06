@@ -1,20 +1,25 @@
-package sem2;
-
-import java.util.Arrays;
-
+package Seminars.sem2;
+/*
+Напишите метод, который сжимает строку.
+Пример: вход aaaabbbcaaadd.
+результат - a4b3ca3d2
+ */
 public class task2 {
     public static void main(String[] args) {
-        int[] arg = {1,0,1,1,1,1,1,0,0,0,1,1,1,1,1,1,1,1,1,1};
-        int count = 0;
-        int max = 0;
-        for (int i = 0; i < arg.length; i++) {
-            if (arg[i] == 1){
+        String myString = "aaaabbbcaaadd";
+        StringBuilder resString = new StringBuilder();
+        int count = 1;
+        for (int i = 0; i < myString.length() - 1; i++) {
+            if (myString.charAt(i + 1) == myString.charAt(i)) {
                 count++;
-                if (count > max) max = count;
+            } else {
+                resString.append(myString.charAt(i));
+                if (count > 1) resString.append(count);
+                count = 1;
             }
-            else count = 0;
         }
-        System.out.println(Arrays.toString(arg));
-        System.out.println(max);
+        resString.append(myString.charAt(myString.length() - 1));
+        if (count > 1) resString.append(count);
+        System.out.println(resString);
     }
 }
