@@ -7,7 +7,6 @@ public class task3 {
     public static void main(String[] args) {
         double num1;
         double num2;
-        double result;
         char operator;
         Scanner reader = new Scanner(System.in);
         System.out.print("Введите первое число: ");
@@ -16,7 +15,11 @@ public class task3 {
         operator = reader.next().charAt(0);
         System.out.print("Введите второе число: ");
         num2 = reader.nextDouble();
-
+        reader.close();
+        System.out.println(calculate(num1, num2, operator));
+    }
+    public static String calculate(double num1, double num2, char operator) {
+        double result = 0;
         switch (operator) {
             case '+':
                 result = num1 + num2;
@@ -32,9 +35,10 @@ public class task3 {
                 break;
             default:
                 System.out.printf("Введен неверный оператор!");
-                return;
         }
-        System.out.print("\nРезультат вычисления:\n");
-        System.out.printf(num1 + " " + operator + " " + num2 + " = " + result);
+        String res = "\nРезультат вычисления:\n" + num1 + " " + operator + " " + num2 + " = " + result;
+//        System.out.print("\nРезультат вычисления:\n");
+//        System.out.printf(num1 + " " + operator + " " + num2 + " = " + result);
+        return res;
     }
 }
