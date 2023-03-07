@@ -10,5 +10,34 @@ package Homework.HW2;
 // Студент Петрова получил 4 по предмету Информатика.
 // Студент Краснов получил 5 по предмету Физика.
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 public class task2 {
+    public static void main(String[] args) {
+        StringBuilder stringFile = new StringBuilder();
+        try {
+            BufferedReader file = new BufferedReader(new FileReader("Java/Homework/HW2/task2.txt"));
+            String line;
+            while ((line = file.readLine()) != null) {
+                String[] array = line.replace("\"", "")
+                        .replace(":", " ")
+                        .replace(",", " ")
+                        .replace("  ", " ")
+                        .split(" ");
+                stringFile.append("Студент ")
+                        .append(array[1])
+                        .append(" получил ")
+                        .append(array[3])
+                        .append(" по предмету");
+                for (int i = 5; i < array.length; i++) {
+                    stringFile.append(" ").append(array[i]);
+                }
+                stringFile.append(".\n");
+            }
+            file.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        System.out.println(stringFile);
+    }
 }
